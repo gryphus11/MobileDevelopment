@@ -311,3 +311,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7b21af105d53454d8a4f0a72ddfed3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
+  sizeOffset: 0.635
