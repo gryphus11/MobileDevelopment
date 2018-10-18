@@ -5,13 +5,14 @@ using UnityEngine;
 public class CPlayer : MonoBehaviour
 {
     public float speed = 10.0f;
-    public float sizeOffset = 0.0f;
 
     private Rigidbody2D _rigidbody = null;
+    private SpriteRenderer _renderer = null;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        _renderer = GetComponent<SpriteRenderer>();
     }
 
     // Use this for initialization
@@ -22,11 +23,6 @@ public class CPlayer : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-
-    }
-
-    private void FixedUpdate()
     {
         MoveHorizontal();
     }
@@ -62,7 +58,8 @@ public class CPlayer : MonoBehaviour
             }
         }
 
-        float screenLimit = (Camera.main.orthographicSize * Camera.main.aspect) - sizeOffset;
+        float spriteHalfWidth = _renderer.sprite.bounds.size.x * 0.5f;
+        float screenLimit = (Camera.main.orthographicSize * Camera.main.aspect) - spriteHalfWidth;
         if (transform.position.x > screenLimit)
         {
             transform.position = new Vector3(screenLimit, transform.position.y, transform.position.z);
