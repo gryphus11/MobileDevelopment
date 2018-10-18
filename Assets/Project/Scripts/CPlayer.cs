@@ -60,6 +60,7 @@ public class CPlayer : MonoBehaviour
 
         float spriteHalfWidth = _renderer.sprite.bounds.size.x * 0.5f;
         float screenLimit = (Camera.main.orthographicSize * Camera.main.aspect) - spriteHalfWidth;
+        //float screenLimit = (Camera.main.orthographicSize * (4.0f / 3.0f)) - spriteHalfWidth;
         if (transform.position.x > screenLimit)
         {
             transform.position = new Vector3(screenLimit, transform.position.y, transform.position.z);
