@@ -25,7 +25,8 @@ public class CSceneManager3DSpace : MonoBehaviour
     void Update()
     {
         infoText.text = "No Input Detected";
-
+        //sdk 연동
+        //에셋번들 
         int touchAmount = 0;
         List<Vector2> touchCoordinates = new List<Vector2>();
 
@@ -34,7 +35,7 @@ public class CSceneManager3DSpace : MonoBehaviour
             ++touchAmount;
             touchCoordinates.Add(touch.position);
         }
-
+#if UNITY_EDITOR
         #region 더미 터치 테스트
         if (Input.GetMouseButton(0))
         {
@@ -54,6 +55,7 @@ public class CSceneManager3DSpace : MonoBehaviour
             touchCoordinates.Add(new Vector2(Random.Range(-100.0f, 100.0f), Random.Range(-100.0f, 100.0f)));
         }
         #endregion
+#endif
 
         if (touchCoordinates.Count > 0)
         {
