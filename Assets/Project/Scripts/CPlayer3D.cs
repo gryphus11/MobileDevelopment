@@ -40,5 +40,23 @@ public class CPlayer3D : MonoBehaviour
         {
             _rigidbody.velocity = Vector3.zero;
         }
+
+        float zDistance = transform.position.z - Camera.main.transform.position.z;
+        zDistance = zDistance / (Mathf.Cos(Camera.main.transform.localEulerAngles.x * Mathf.Deg2Rad));
+
+        Vector3 leftLimitVector = Camera.main.ViewportToWorldPoint(new Vector3(0.0f, 0.0f, zDistance));
+        Vector3 rightLimitVector = Camera.main.ViewportToWorldPoint(new Vector3(1.0f, 0.0f, zDistance));
+
+        float leftLimit = leftLimitVector.x;
+        float rightLimit = rightLimitVector.x;
+
+        if (transform.position.x < leftLimit)
+        {
+            transform.position = new Vector3(leftLimit, transform.position.y, transform.position.z);
+        }
+        else if (transform.position.x > rightLimit)
+        {
+            transform.position = new Vector3(rightLimit, transform.position.y, transform.position.z);
+        }
     }
 }
